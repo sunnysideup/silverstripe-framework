@@ -60,14 +60,14 @@ class DBBoolean extends DBField
 
     public function scaffoldSearchField($title = null)
     {
-        $anyText = _t(__CLASS__ . '.ANY', 'Any');
         $source = [
+            null => _t(__CLASS__ . '.ANY', 'Any'),
             1 => _t(__CLASS__ . '.YESANSWER', 'Yes'),
             0 => _t(__CLASS__ . '.NOANSWER', 'No')
         ];
 
         $field = new DropdownField($this->name, $title, $source);
-        $field->setEmptyString("($anyText)");
+
         return $field;
     }
 

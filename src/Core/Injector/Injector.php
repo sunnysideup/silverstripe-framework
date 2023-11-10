@@ -551,6 +551,9 @@ class Injector implements ContainerInterface
         return $value;
     }
 
+
+    protected $dataObjectCache = [];
+
     /**
      * Instantiate a managed object
      *
@@ -628,7 +631,21 @@ class Injector implements ContainerInterface
                     Factory::class
                 ));
             }
-            $object = $factory->create($class, $constructorParams);
+            $object = null;
+            if(is_subclass_of($class, DataObject::class)) {
+                if (!empty($constructorParams[0]['ID'])) {
+                    $key = $class . $constructorParams[0]['ID'];
+                    if(isset($this->dataObjectCache[$key])) {
+                        $object = $this->dataObjectCache[$key];
+                    } else {
+                        $object = $factory->create($class, $constructorParams);
+                        $this->dataObjectCache[$key] = $object;
+                    }
+                }
+            }
+            if($object === null) {
+                $object = $factory->create($class, $constructorParams);
+            }
         }
         if (!is_object($object)) {
             throw new InjectorNotFoundException('Factory does not return an object');
@@ -662,6 +679,7 @@ class Injector implements ContainerInterface
 
         return $object;
     }
+
 
     /**
      * Inject $object with available objects from the service cache

@@ -113,7 +113,17 @@ use stdClass;
  */
 class DataObject extends ViewableData implements DataObjectInterface, i18nEntityProvider, Resettable
 {
+    private static int $lastId = 0;
+    private int $uid;
 
+    public function __destruct()
+    {
+        $lines =  [
+            $this->uid . ',' . $this->ClassName . ', ' . $this->ID,
+        ];
+        file_put_contents('/ss4/checkcheck.sunnysideup.co.nz/log.csv', PHP_EOL . implode(PHP_EOL, $lines), FILE_APPEND);
+    }
+    
     /**
      * Human-readable singular name.
      * @var string

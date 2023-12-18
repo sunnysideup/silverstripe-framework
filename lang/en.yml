@@ -103,7 +103,7 @@ en:
     Create: Create
     Delete: Delete
     DeletePermissionsFailure: 'No delete permissions'
-    Deleted: 'Deleted {type} {name}'
+    Deleted: 'Deleted {type} "{name}"'
     Save: Save
     Saved: 'Saved {name} {link}'
   SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
@@ -112,6 +112,8 @@ en:
     NEXT: 'Go to next record'
     PREVIOUS: 'Go to previous record'
     ViewPermissionsFailure: 'It seems you don''t have the necessary permissions to view "{ObjectTitle}"'
+    SAVETOASTMESSAGE: 'Saved {type} "{title}" successfully.'
+    SAVEDUP: 'Saved successfully.'
   SilverStripe\Forms\GridField\GridFieldEditButton:
     EDIT: Edit
   SilverStripe\Forms\GridField\GridFieldFilterHeader:
@@ -139,6 +141,10 @@ en:
     IsNullLabel: 'Is Null'
   SilverStripe\Forms\NumericField:
     VALIDATION: "'{value}' is not a number, only numbers can be accepted for this field"
+  SilverStripe\Forms\SearchableDropdownTrait:
+    SELECT: 'Select...'
+    TYPE_TO_SEARCH: 'Type to search...'
+    SELECT_OR_TYPE_TO_SEARCH: 'Select or type to search...'
   SilverStripe\Forms\TextField:
     VALIDATEMAXLENGTH: 'The value for {name} must not exceed {maxLength} characters in length'
   SilverStripe\Forms\TimeField:
@@ -288,6 +294,7 @@ en:
     CURRENT_PASSWORD: 'Current Password'
     EDIT_PASSWORD: 'New Password'
     EMAIL: Email
+    EMAIL_FAILED: 'There was an error when trying to email you a password reset link.'
     EMPTYNEWPASSWORD: "The new password can't be empty, please try again"
     ENTEREMAIL: 'Please enter an email address to get a password reset link.'
     ERRORLOCKEDOUT2: 'Your account has been temporarily disabled because of too many failed attempts at logging in. Please try again in {count} minutes.'
